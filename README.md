@@ -1,6 +1,6 @@
-# NGINX Git Repository Hosting
+# Github Repository Hosting
 
-This project sets up a Dockerized NGINX server that hosts static websites by cloning repositories from a specified Git URL. It simplifies the process of deploying static HTML, CSS, and JavaScript files directly from a Git repository. 
+This project sets up a Dockerized NGINX server that hosts static websites locally on your machine by cloning repositories from a specified Git URL. It simplifies the process of deploying static HTML, CSS, and JavaScript files directly from a Git repository. 
 
 ## Features
 
@@ -19,14 +19,20 @@ This project sets up a Dockerized NGINX server that hosts static websites by clo
 1. **Build Docker Image**:
  
    ```bash
-   docker build --build-arg REPO_URL <repo-url> -t <image-title> .
+   docker build --build-arg REPO_URL=<repo-url> -t <image-title> .
 2. **Run Docker Container**
     ``` bash
-    docker run -d -p 80:80 <container-id>
+    docker run -d -p 80:80 <image-title> --name <container-name> 
       ```
 3. **Access your Hosted Site**
 - The website will be available at http://lvh.me or http://<strong>\<subdomain></strong>.lvh.me
-- Replace <subdomain> with the name of your Git repository to access different sites.
+- Replace **\<subdomain>** with the name of your Git repository to access different sites.
+
+4. **Host Additional Repos**
+
+    ```bash
+    docker exec <container-name> clone_repo <repo-url>
+    ```
 
 ## Example
 <div align="center">
